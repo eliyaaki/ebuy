@@ -1,27 +1,28 @@
 import logo from "./logo.svg";
 import { Routes, Route, Navigate } from "react-router-dom";
 
-import Login from "./components/Login";
-
 import Layout from "./components/Layout";
 import AuthContext from "./context/AuthContext";
 import { useContext } from "react";
 
-import "./App.scss";
+import Login from "./pages/Login";
+
 import ProtectedRoute from "./UiKit/ProtectedRoute";
-import Home from "./components/Home";
-import LoginClub from "./components/LoginClub";
-import RegisterClub from "./components/RegisterClub";
+import Home from "./pages/Home";
+import LoginClub from "./pages/SignIn";
+import RegisterClub from "./pages/SignUp";
+
+import "./App.scss";
 
 const App = () => {
-  const { user } = useContext(AuthContext);
+  const { loggedIn } = useContext(AuthContext);
   return (
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route
             index
-            element={user === null ? <Login /> : <Navigate to="home" />}
+            element={loggedIn ? <Login /> : <Navigate to="home" />}
           />
           <Route path="/a" element={<>a</>} />
           <Route path="/" element={<ProtectedRoute />}>

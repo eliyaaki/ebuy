@@ -11,7 +11,7 @@ import "./index.scss";
 const TopBar = () => {
   const { onThemeSwitch, theme } = useSettings();
 
-  const { logout, setUser, user } = useAuth();
+  const { logout, setUser, loggedIn } = useAuth();
 
   const handleLogout = async () => {
     try {
@@ -21,7 +21,7 @@ const TopBar = () => {
 
   return (
     <>
-      {user && (
+      {loggedIn && (
         <header className="header">
           <img src={img} height="50px" alt="topbar" className="bar" />
           <nav className="nav">

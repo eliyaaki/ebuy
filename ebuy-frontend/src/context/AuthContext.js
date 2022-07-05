@@ -4,6 +4,8 @@ import useStickyState from "../hooks/use-sticky-state";
 import { SettingsContextProvider } from "./SettingsContext";
 
 const AuthContext = React.createContext({
+  loggedIn: false,
+  setLoggedIn: () => {},
   user: null,
   setUser: () => {},
   token: null,
@@ -17,6 +19,7 @@ export const useAuth = () => {
 };
 
 export const AuthContextProvider = ({ children }) => {
+  const [loggedIn, setLoggedIn] = useStickyState(null, "loggedIn");
   const [user, setUser] = useStickyState(null, "user");
   const [token, setToken] = useStickyState(null, "token");
   const navigate = useNavigate();
@@ -24,8 +27,13 @@ export const AuthContextProvider = ({ children }) => {
   const logout = () => {};
 
   const login = () => {
-    setUser("user");
+    setLoggedIn(true);
     navigate(`/Home`, { replace: true });
+  };
+
+  const signIn = () => {
+    setUser("user");
+    // navigate(`/Home`, { replace: true });
   };
 
   useEffect(() => {}, []);
@@ -34,8 +42,9 @@ export const AuthContextProvider = ({ children }) => {
     <SettingsContextProvider>
       <AuthContext.Provider
         value={{
+          loggedIn,
+          setLoggedIn: setLoggedIn,
           user,
-          setUser: setUser,
           setUser: setUser,
           token,
           setToken: setToken,
