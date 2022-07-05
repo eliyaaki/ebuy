@@ -41,22 +41,14 @@ const Home = () => {
         </section>
         <figure className={` ${showVideo ? "video" : "hide-video"} `}>
           <div className="sketchfab-embed-wrapper">
-            {" "}
             <iframe
               title="Read more books"
-              frameborder="0"
-              allowfullscreen
+              frameBorder="0"
               mozallowfullscreen="true"
               webkitallowfullscreen="true"
               allow="autoplay; fullscreen; xr-spatial-tracking"
-              xr-spatial-tracking
-              execution-while-out-of-viewport
-              execution-while-not-rendered
-              web-share
               src="https://sketchfab.com/models/f55ba7a1eba34c68a799659eedbf4eeb/embed"
-            >
-              {" "}
-            </iframe>{" "}
+            ></iframe>
           </div>
           <FontAwesomeIcon
             icon={showVideo ? faX : faBoxOpen}

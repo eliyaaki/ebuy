@@ -11,7 +11,7 @@ import "./index.scss";
 const TopBar = () => {
   const { onThemeSwitch, theme } = useSettings();
 
-  const { logout, setUser, loggedIn } = useAuth();
+  const { logout, setUser, loggedIn, user } = useAuth();
 
   const handleLogout = async () => {
     try {
@@ -25,44 +25,71 @@ const TopBar = () => {
         <header className="header">
           <img src={img} height="50px" alt="topbar" className="bar" />
           <nav className="nav">
-            <ul>
-              <>
-                <li>
-                  <NavLink
-                    className={(navData) => {
-                      if (navData.isActive) {
-                        return "active";
+            {!user ? (
+              <ul>
+                <>
+                  <li>
+                    <NavLink
+                      className={(navData) => {
+                        if (navData.isActive) {
+                          return "active";
+                        }
+                        return "";
+                      }}
+                      to={`/Home`}
+                    >
+                      <>
+                        <img src={img2} className="arrow"></img>
+                        <p>Home</p>
+                      </>
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      className={(navData) =>
+                        navData.isActive ? "active" : ""
                       }
-                      return "";
-                    }}
-                    to={`/Home`}
-                  >
-                    <>
+                      to="/login-club"
+                    >
                       <img src={img2} className="arrow"></img>
-                      <p>Home</p>
-                    </>
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    className={(navData) => (navData.isActive ? "active" : "")}
-                    to="/login-club"
-                  >
-                    <img src={img2} className="arrow"></img>
-                    <p>Login</p>
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    className={(navData) => (navData.isActive ? "active" : "")}
-                    to="/register-club"
-                  >
-                    <img src={img2} className="arrow"></img>
-                    <p>Register</p>
-                  </NavLink>
-                </li>
-              </>
-            </ul>
+                      <p>Login</p>
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      className={(navData) =>
+                        navData.isActive ? "active" : ""
+                      }
+                      to="/register-club"
+                    >
+                      <img src={img2} className="arrow"></img>
+                      <p>Register</p>
+                    </NavLink>
+                  </li>
+                </>
+              </ul>
+            ) : (
+              <ul>
+                <>
+                  <li>
+                    <NavLink
+                      className={(navData) => {
+                        if (navData.isActive) {
+                          return "active";
+                        }
+                        return "";
+                      }}
+                      to={`/Products`}
+                    >
+                      <>
+                        <img src={img2} className="arrow"></img>
+                        <p>Products</p>
+                      </>
+                    </NavLink>
+                  </li>
+                </>
+              </ul>
+            )}
           </nav>
         </header>
       )}

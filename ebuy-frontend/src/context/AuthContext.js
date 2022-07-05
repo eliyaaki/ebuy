@@ -11,6 +11,7 @@ const AuthContext = React.createContext({
   token: null,
   setToken: () => {},
   login: () => {},
+  signIn: () => {},
   logout: () => {},
 });
 
@@ -33,7 +34,7 @@ export const AuthContextProvider = ({ children }) => {
 
   const signIn = () => {
     setUser("user");
-    // navigate(`/Home`, { replace: true });
+    navigate(`/Products`, { replace: true });
   };
 
   useEffect(() => {}, []);
@@ -49,6 +50,7 @@ export const AuthContextProvider = ({ children }) => {
           token,
           setToken: setToken,
           login: login,
+          signIn: signIn,
           logout: logout,
         }}
       >
