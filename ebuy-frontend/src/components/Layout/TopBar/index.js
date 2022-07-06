@@ -3,6 +3,7 @@ import Toggle from "../../../UiKit/Toggle";
 import { useSettings } from "../../../context/SettingsContext";
 import { useAuth } from "../../../context/AuthContext";
 import { NavLink } from "react-router-dom";
+import Cart from "./Cart";
 import img from "../../../assets/images/Navigation/Rectangle 5.png";
 import img2 from "../../../assets/images/Navigation/Polygon 1.png";
 
@@ -69,7 +70,7 @@ const TopBar = () => {
                 </>
               </ul>
             ) : (
-              <ul>
+              <ul className="inner-site">
                 <>
                   <li>
                     <NavLink
@@ -86,6 +87,9 @@ const TopBar = () => {
                         <p>Products</p>
                       </>
                     </NavLink>
+                  </li>
+                  <li className="cart">
+                    <Cart />
                   </li>
                 </>
               </ul>

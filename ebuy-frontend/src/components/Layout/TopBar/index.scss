@@ -14,6 +14,13 @@
   nav {
     position: fixed;
     z-index: 1;
+    width: 100%;
+    .inner-site {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-right: 20px;
+    }
     ul {
       height: 100%;
       list-style: none;
@@ -22,6 +29,20 @@
       justify-content: flex-start;
       padding: 0;
       margin: 0;
+      .cart {
+        position: relative;
+        color: #ffffff;
+        animation: zoomInDown 1s;
+        cursor: pointer;
+        p {
+          position: absolute;
+          top: -150%;
+          left: 50%;
+          background-color: rgba($color: #af6f21, $alpha: 0.7);
+          padding: 1px 4px;
+          border-radius: 100%;
+        }
+      }
       li {
         margin: 0 1rem;
         a {
