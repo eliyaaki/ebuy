@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { cartActions } from "../../../../../store/Cart";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAdd, faSubtract } from "@fortawesome/free-solid-svg-icons";
+import {
+  faAdd,
+  faSubtract,
+  faArrowRight,
+} from "@fortawesome/free-solid-svg-icons";
 import "./index.scss";
 
 const CartDrawer = () => {
+  const navigate = useNavigate();
   const cartData = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
@@ -18,6 +24,7 @@ const CartDrawer = () => {
       clearTimeout(timeoutId);
     };
   }, []);
+  console.log(cartData.cartItems);
   return (
     <>
       <div className="cart-page">
@@ -40,8 +47,8 @@ const CartDrawer = () => {
               : "cart-drawer-hide-fast"
           }`}
         >
-          {cartData.products.map((p) => {
-            if (p.quntity > 0) {
+          {cartData.cartItems.map((p) => {
+            if (p && p.quntity > 0) {
               return (
                 <div key={p.id} className="product">
                   <img src={p.img} />
@@ -68,7 +75,17 @@ const CartDrawer = () => {
             }
           })}
           <h1>Total Price: {cartData.totalPrice}$</h1>
-          <button>CheckOut</button>
+          <button
+            disabled={cartData.cartItems.length <= 0}
+            onClick={() => navigate("/checkout")}
+          >
+            <p>CheckOut</p>
+            <FontAwesomeIcon icon={faArrowRight} />
+          </button>
+          <div className="input-error">
+            {cartData.cartItems.length <= 0 &&
+              "You Need to have at least one item in yout cart to checkout"}
+          </div>
         </div>
       </div>
     </>

@@ -39,7 +39,7 @@ const Home = () => {
             />
           </h2>
         </section>
-        <figure className={` ${showVideo ? "video" : "hide-video"} `}>
+        {/* <figure className={` ${showVideo ? "video" : "hide-video"} `}>
           <div className="sketchfab-embed-wrapper">
             <iframe
               title="Read more books"
@@ -54,7 +54,7 @@ const Home = () => {
             icon={showVideo ? faX : faBoxOpen}
             onClick={() => setShowVideo((prevState) => !prevState)}
           />
-        </figure>
+        </figure> */}
       </div>
       <WhyUs />
     </div>

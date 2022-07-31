@@ -14,6 +14,8 @@ import RegisterClub from "./pages/SignUp";
 
 import "./App.scss";
 import Products from "./pages/Products";
+import CasualLogin from "./pages/CasualLogin";
+import Checkout from "./components/Checkout";
 
 const App = () => {
   const { loggedIn, user } = useContext(AuthContext);
@@ -35,21 +37,18 @@ const App = () => {
             }
           />
           <Route path="/" element={<ProtectedRoute />}>
+            <Route path="/Home" element={<Home />} />
+            <Route path="/login-club" element={<LoginClub />} />
+            <Route path="/casual-login-club" element={<CasualLogin />} />
+            <Route path="/register-club" element={<RegisterClub />} />
             <Route
-              path="/home"
-              element={user ? <Navigate to="/404" /> : <Home />}
+              path="/products"
+              element={user ? <Products /> : <Navigate to="/404" />}
             />
             <Route
-              path="/register-club"
-              element={user ? <Navigate to="/404" /> : <RegisterClub />}
+              path="/checkout"
+              element={user ? <Checkout /> : <Navigate to="/404" />}
             />
-            <Route
-              path="/login-club"
-              element={user ? <Navigate to="/404" /> : <LoginClub />}
-            />
-            <Route path="/" element={<ProtectedRoute club={true} />}>
-              <Route path="/products" element={<Products />} />
-            </Route>
           </Route>
         </Route>
       </Routes>

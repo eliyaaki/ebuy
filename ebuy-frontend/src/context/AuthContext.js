@@ -12,7 +12,8 @@ const AuthContext = React.createContext({
   setToken: () => {},
   login: () => {},
   signIn: () => {},
-  logout: () => {},
+  logoutToHome: () => {},
+  logoutFromSystem: () => {},
 });
 
 export const useAuth = () => {
@@ -25,7 +26,15 @@ export const AuthContextProvider = ({ children }) => {
   const [token, setToken] = useStickyState(null, "token");
   const navigate = useNavigate();
 
-  const logout = () => {};
+  const logoutFromSystem = () => {
+    setLoggedIn(false);
+    navigate(`/`, { replace: true });
+  };
+
+  const logoutToHome = () => {
+    setUser(null);
+    navigate(`/Home`, { replace: true });
+  };
 
   const login = () => {
     setLoggedIn(true);
@@ -51,7 +60,8 @@ export const AuthContextProvider = ({ children }) => {
           setToken: setToken,
           login: login,
           signIn: signIn,
-          logout: logout,
+          logoutToHome: logoutToHome,
+          logoutFromSystem: logoutFromSystem,
         }}
       >
         {children}

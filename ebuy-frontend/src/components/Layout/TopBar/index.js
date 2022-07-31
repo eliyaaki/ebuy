@@ -8,15 +8,16 @@ import img from "../../../assets/images/Navigation/Rectangle 5.png";
 import img2 from "../../../assets/images/Navigation/Polygon 1.png";
 
 import "./index.scss";
+import Settings from "./Settings";
 
 const TopBar = () => {
   const { onThemeSwitch, theme } = useSettings();
 
-  const { logout, setUser, loggedIn, user } = useAuth();
+  const { logoutToHome, setUser, loggedIn, user } = useAuth();
 
   const handleLogout = async () => {
     try {
-      await logout();
+      // await logout();
     } catch (e) {}
   };
 
@@ -61,11 +62,25 @@ const TopBar = () => {
                       className={(navData) =>
                         navData.isActive ? "active" : ""
                       }
+                      to="/casual-login-club"
+                    >
+                      <img src={img2} className="arrow"></img>
+                      <p>Casual Login</p>
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      className={(navData) =>
+                        navData.isActive ? "active" : ""
+                      }
                       to="/register-club"
                     >
                       <img src={img2} className="arrow"></img>
                       <p>Register</p>
                     </NavLink>
+                  </li>
+                  <li className="last">
+                    <Settings />
                   </li>
                 </>
               </ul>
@@ -88,8 +103,8 @@ const TopBar = () => {
                       </>
                     </NavLink>
                   </li>
-                  <li className="cart">
-                    <Cart />
+                  <li className="last">
+                    <Settings page="products" />
                   </li>
                 </>
               </ul>

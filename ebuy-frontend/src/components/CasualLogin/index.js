@@ -7,7 +7,7 @@ import { useAuth } from "../../context/AuthContext";
 import "./index.scss";
 import Modal from "../../UiKit/Modal";
 
-const LoginClub = () => {
+const CasualLoginClub = () => {
   const formRef = useRef();
   const [userName, setUserName] = useState();
   const [password, setPassword] = useState();
@@ -73,7 +73,7 @@ const LoginClub = () => {
             <h1 className="login-headers">
               <AnimatedLetters
                 letterClass={letterClass}
-                strArray={"Login".split("")}
+                strArray={"Casual Login".split("")}
                 idx={5}
               />
             </h1>
@@ -81,7 +81,7 @@ const LoginClub = () => {
               <AnimatedLetters
                 letterClass={letterClass}
                 strArray={"Club Member".split("")}
-                idx={11}
+                idx={17}
               />
             </h2>
             <div className="row first">
@@ -135,4 +135,4 @@ const LoginClub = () => {
   );
 };
 
-export default LoginClub;
+export default CasualLoginClub;

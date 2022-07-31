@@ -1,7 +1,6 @@
 const products = [
   {
     id: "1",
-
     quntity: "0",
     Author: "Idan Barzilay",
     img: "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/7866/9781786645517.jpg",
@@ -14,7 +13,7 @@ const products = [
   {
     id: "2",
     quntity: "0",
-    Author: "Idan Barzilay",
+    Author: "Haim Barzilay",
     Title: "Beauty and The Beast",
     img: "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9780/7364/9780736435758.jpg",
     Keywords: [],
