@@ -1,4 +1,4 @@
-@import "../../styles/variabels/variabels.scss";
+@import "../../../styles/variabels/variabels.scss";
 @import "animate.css";
 .checkout {
   background-image: url("https://images.unsplash.com/photo-1516979187457-637abb4f9353?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80");
@@ -24,7 +24,7 @@
       height: 3rem;
       font-size: $text-s1;
       font-weight: 400;
-      background: url(../../assets/images/Login/button_brown.png) no-repeat
+      background: url(../../../assets/images/Login/button_brown.png) no-repeat
         center;
       color: #413422 !important;
       position: relative;
@@ -80,7 +80,7 @@
   textarea {
     padding: $text-m1;
     border: 0;
-    background: url("../../assets/images/Login/input.svg") center;
+    background: url("../../../assets/images/Login/input.svg") center;
     border-radius: 4px;
     font-size: $text-m1;
     color: $input-text-color;
@@ -101,5 +101,67 @@
     /* Microsoft Edge */
     opacity: 0.8;
     font-size: $text-m3;
+  }
+}
+
+.shipment-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  input,
+  textarea {
+    padding: $text-m1;
+    border: 0;
+    background: url("../../../assets/images/Login/input.svg") center;
+    border-radius: 4px;
+    font-size: $text-m1;
+    color: $input-text-color;
+    width: 100%;
+  }
+  ::placeholder {
+    opacity: 0.8; /* Firefox */
+    font-size: $text-m1;
+  }
+
+  :-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    opacity: 0.8;
+    font-size: $text-m3;
+  }
+
+  ::-ms-input-placeholder {
+    /* Microsoft Edge */
+    opacity: 0.8;
+    font-size: $text-m3;
+  }
+
+  ::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+  }
+  .input-error {
+    width: 100%;
+    color: $dark-error;
+    display: flex;
+    font-size: $text-s1;
+    align-items: flex-start;
+    justify-content: flex-start;
+    font-weight: bold;
+  }
+  button {
+    width: 70%;
+    height: 3rem;
+    font-size: $text-m1;
+    font-weight: 400;
+    background: url(../../../assets/images/Login/button_brown.png) no-repeat
+      center;
+    color: #413422 !important;
+    position: relative;
+    gap: 10px;
+    cursor: pointer;
+    font-family: "Libre Caslon Text", serif;
+    border: 0;
   }
 }

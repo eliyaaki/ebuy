@@ -1,26 +1,15 @@
 import React from "react";
+import CartDrawer from "../Layout/TopBar/Cart/CartDrawer";
+import Card from "./Card";
 import "./index.scss";
+import Shipment from "./Shipment";
 
 const Checkout = () => {
   return (
     <div className="checkout">
-      <div>
-        <div>
-          Delivery mode
-          <select>
-            <option>Email </option>
-            <option>Phisical </option>
-          </select>
-        </div>
-        <div>
-          Shipment option
-          <select>
-            <option>Email </option>
-            <option>Phisical </option>
-          </select>
-        </div>
-        <button>asdasd</button>
-      </div>
+      <CartDrawer />
+      <Shipment />
+      <Card />
     </div>
   );
 };

@@ -13,6 +13,7 @@ import "./index.scss";
 const CartDrawer = () => {
   const navigate = useNavigate();
   const cartData = useSelector((state) => state.cart);
+  console.log(cartData);
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   useEffect(() => {
@@ -47,7 +48,7 @@ const CartDrawer = () => {
               : "cart-drawer-hide-fast"
           }`}
         >
-          {cartData.cartItems.map((p) => {
+          {cartData.products.map((p) => {
             if (p && p.quntity > 0) {
               return (
                 <div key={p.id} className="product">
