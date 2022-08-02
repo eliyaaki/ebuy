@@ -6,6 +6,7 @@ import Modal from "../../../UiKit/Modal";
 const Shipment = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [shipmentOption, setShipmentOption] = useState("Email");
+  const [shipmentData, setShipmentData] = useState(null);
   return (
     <>
       <>
@@ -46,7 +47,8 @@ const Shipment = () => {
               return errors;
             }}
             onSubmit={(values, { setSubmitting }) => {
-              values.modal = !values.modal;
+              console.log("Submit");
+              setShipmentData(values);
             }}
           >
             {({
@@ -76,13 +78,154 @@ const Shipment = () => {
                       </div>
                     </div>
                   </div>
-                  <button>Submit</button>
+                  <button type="submit">Submit</button>
                 </form>
               </>
             )}
           </Formik>
         ) : (
-          <></>
+          <Formik
+            initialValues={{
+              country: "",
+              state: "",
+              street: "",
+              houseNumber: "",
+              zipCode: "",
+              pob: "",
+            }}
+            validate={(values) => {
+              const errors = {};
+              if (!values.country) {
+                errors.country = "Country is Required";
+              }
+              if (!values.state) {
+                errors.state = "State is Required";
+              }
+              if (!values.street) {
+                errors.street = "Street is Required";
+              }
+              if (!values.houseNumber) {
+                errors.houseNumber = "House Number is Required";
+              } else if (values.houseNumber <= 0) {
+                errors.houseNumber = "House Number can't be less or equle to 0";
+              }
+              if (!values.zipCode) {
+                errors.zipCode = "Zip Code is Required";
+              } else if (values.zipCode <= 0) {
+                errors.zipCode = "Zip Code can't be less or equle to 0";
+              }
+              return errors;
+            }}
+            onSubmit={(values, { setSubmitting }) => {
+              setShipmentData(values);
+            }}
+          >
+            {({
+              values,
+              errors,
+              touched,
+              handleChange,
+              handleBlur,
+              handleSubmit,
+              isSubmitting,
+            }) => (
+              <>
+                <form className="form shipment-form" onSubmit={handleSubmit}>
+                  <div className="shipment-detailes">
+                    <div className="row">
+                      Country
+                      <select
+                        name="country"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.country}
+                      >
+                        <option>country </option>
+                        <option>country</option>
+                        <option>country </option>
+                      </select>
+                      <div className="input-error">
+                        {errors.country && touched.country && errors.country}
+                      </div>
+                    </div>
+                    <div className="row">
+                      State
+                      <select
+                        name="state"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.state}
+                      >
+                        <option>state </option>
+                        <option>state</option>
+                        <option>state </option>
+                      </select>
+                      <div className="input-error">
+                        {errors.state && touched.state && errors.state}
+                      </div>
+                    </div>
+                    <div className="row">
+                      <input
+                        placeholder="Street"
+                        type="street"
+                        name="street"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.street}
+                        maxLength="50"
+                      ></input>
+                      <div className="input-error">
+                        {errors.street && touched.street && errors.street}
+                      </div>
+                    </div>
+                    <div className="row">
+                      <input
+                        placeholder="House Number"
+                        type="number"
+                        name="houseNumber"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.houseNumber}
+                      ></input>
+                      <div className="input-error">
+                        {errors.houseNumber &&
+                          touched.houseNumber &&
+                          errors.houseNumber}
+                      </div>
+                    </div>
+                    <div className="row">
+                      <input
+                        placeholder="Zip Code"
+                        type="number"
+                        name="zipCode"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.zipCode}
+                        maxLength="10"
+                      ></input>
+                      <div className="input-error">
+                        {errors.zipCode && touched.zipCode && errors.zipCode}
+                      </div>
+                    </div>
+                    <div className="row">
+                      <input
+                        placeholder="P.O.B"
+                        type="text"
+                        name="pob"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.pob}
+                      ></input>
+                      <div className="input-error">
+                        {errors.pob && touched.pob && errors.pob}
+                      </div>
+                    </div>
+                  </div>
+                  <button type="submit">Submit</button>
+                </form>
+              </>
+            )}
+          </Formik>
         )}
       </Modal>
     </>

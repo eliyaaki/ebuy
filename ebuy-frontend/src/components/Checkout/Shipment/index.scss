@@ -109,6 +109,11 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  .shipment-detailes {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
   gap: 20px;
   input,
   textarea {
