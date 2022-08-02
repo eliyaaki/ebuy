@@ -9,6 +9,12 @@ INSERT INTO product (category, author, title, key_words, price, publication_date
                                ('MAGAZINE', 'Amit Segal', 'Stam', 'The first magazine', 10, '2008-09-29');
 
 
+
+INSERT INTO bogo (product_id, level) VALUES
+                               (1,1),
+                               (2,2),
+                               (3,3);
+
 INSERT INTO country (name) VALUES
 ('US'),
 ('UK'),

@@ -18,5 +18,6 @@ public class ClubMember {
     private String loginName;
     private String passWord;
     private String address;
+    private String email;
     private OffsetDateTime registrationDateTime;
 }
