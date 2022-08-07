@@ -5,14 +5,20 @@ import com.ebuy.data.*;
 import com.ebuy.dto.GetClubMemberRequest;
 import com.ebuy.dto.GetClubMemberResponse;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.OffsetDateTime;
+import java.time.Period;
 import java.util.List;
 import java.util.Random;
 
 @AllArgsConstructor
 @Service
+@Slf4j
 public class RegistrationService {
     @Autowired
     private final ClubMemberRepository clubMemberRepository;
@@ -23,6 +29,8 @@ public class RegistrationService {
     @Autowired
     private final StateRepository stateRepository;
 
+    @Autowired
+    private final DiscountRepository discountRepository;
     @Autowired
     private final BogoRepository bogoRepository;
 
@@ -35,16 +43,22 @@ public class RegistrationService {
     public GetClubMemberResponse getClubMemberUser(GetClubMemberRequest clubMemberRequest){
         ClubMember existingClubMember=clubMemberRepository.findByLoginNameAndPassWord(clubMemberRequest.getLoginName(), clubMemberRequest.getPassWord());
         GetClubMemberResponse clubMemberResponse=new GetClubMemberResponse();
-//        if (existingClubMember.getRegistrationDateTime().getYear()){
-//
-//        }
-        Bogo bogo=getRandomBogo();
-        clubMemberResponse.setBogo(bogo);
+        if (checkIfYearPassed(clubMemberRequest.getRegistrationTime())){
+            Bogo bogo=getRandomBogo();
+            clubMemberResponse.setBogo(bogo);
+        }
         clubMemberResponse.setAddress(existingClubMember.getAddress());
         clubMemberResponse.setLoginName(existingClubMember.getLoginName());
+        clubMemberResponse.setDiscountAmount(discountRepository.findByAmount().getAmount());
         return clubMemberResponse;
     }
-
+    private Boolean checkIfYearPassed(OffsetDateTime registrationTime){
+        LocalDate regdate = registrationTime.toLocalDate();
+        LocalDate today = LocalDate.now();
+        int years = Period.between(regdate, today).getYears();
+        log.debug("number of years: " + years);
+        return years>=1;
+    }
     private Bogo getRandomBogo() {
         List<Bogo> bogosList = bogoRepository.findAll();
         Random rand=new Random();

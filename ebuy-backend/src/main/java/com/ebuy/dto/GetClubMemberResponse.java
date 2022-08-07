@@ -7,5 +7,6 @@ import lombok.Data;
 public class GetClubMemberResponse {
     private String loginName;
     private String address;
+    private Integer discountAmount;
     private Bogo bogo;
 }

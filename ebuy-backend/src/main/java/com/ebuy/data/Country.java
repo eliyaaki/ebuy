@@ -13,4 +13,9 @@ public class Country {
     @Column(name = "id", nullable = false)
     private Long id;
     private String name;
+
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "fk_area")
+    private Area area;
 }
