@@ -16,8 +16,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 //@ComponentScan(
 //		"com.ebuy"
 //)
-@EnableJpaRepositories("com.ebuy.dao")
-@EntityScan("com.ebuy.data")
+@EnableJpaRepositories("com.ebuy")
+@EntityScan("com.ebuy")
 @OpenAPIDefinition(info = @Info(title = "Ebuy API", version = "1.0", description = "Book Store"))
 @SpringBootApplication
 public class EbuyApplication {

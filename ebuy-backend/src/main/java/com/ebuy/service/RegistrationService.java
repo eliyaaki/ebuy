@@ -49,7 +49,8 @@ public class RegistrationService {
         }
         clubMemberResponse.setAddress(existingClubMember.getAddress());
         clubMemberResponse.setLoginName(existingClubMember.getLoginName());
-        clubMemberResponse.setDiscountAmount(discountRepository.findByAmount().getAmount());
+        var discounts=discountRepository.findAll();
+        clubMemberResponse.setDiscountAmount(discounts.get(0).getAmount());
         return clubMemberResponse;
     }
     private Boolean checkIfYearPassed(OffsetDateTime registrationTime){
