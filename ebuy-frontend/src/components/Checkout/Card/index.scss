@@ -9,6 +9,20 @@
   justify-content: center;
   flex-direction: column;
   font-size: $text-m1;
+  button {
+    width: 70%;
+    height: 3rem;
+    font-size: $text-m1;
+    font-weight: 400;
+    background: url(../../../assets/images/Login/button_brown.png) no-repeat
+      center;
+    color: #413422 !important;
+    position: relative;
+    gap: 10px;
+    cursor: pointer;
+    font-family: "Libre Caslon Text", serif;
+    border: 0;
+  }
   .shipment-detailes {
     display: flex;
     align-items: center;
@@ -18,20 +32,6 @@
     .row {
       display: flex;
       gap: 16px;
-    }
-    button {
-      width: 70%;
-      height: 3rem;
-      font-size: $text-s1;
-      font-weight: 400;
-      background: url(../../../assets/images/Login/button_brown.png) no-repeat
-        center;
-      color: #413422 !important;
-      position: relative;
-      gap: 10px;
-      cursor: pointer;
-      font-family: "Libre Caslon Text", serif;
-      border: 0;
     }
   }
   .card-detailes {

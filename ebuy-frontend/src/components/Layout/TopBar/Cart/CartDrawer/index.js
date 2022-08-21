@@ -11,11 +11,12 @@ import {
 import "./index.scss";
 
 const CartDrawer = () => {
-  const navigate = useNavigate();
-  const cartData = useSelector((state) => state.cart);
-  console.log(cartData);
-  const dispatch = useDispatch();
   const [show, setShow] = useState(false);
+  const navigate = useNavigate();
+
+  const cartData = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+
   useEffect(() => {
     let timeoutId = setTimeout(() => {
       setShow(true);

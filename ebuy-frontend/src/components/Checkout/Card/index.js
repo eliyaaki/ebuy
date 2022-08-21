@@ -155,6 +155,7 @@ const Card = () => {
                 </div>
               </div>
             </div>
+            <button type="submit">Buy</button>
           </form>
         )}
       </Formik>

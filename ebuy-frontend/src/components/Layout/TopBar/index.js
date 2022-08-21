@@ -103,6 +103,22 @@ const TopBar = () => {
                       </>
                     </NavLink>
                   </li>
+                  <li>
+                    <NavLink
+                      className={(navData) => {
+                        if (navData.isActive) {
+                          return "active";
+                        }
+                        return "";
+                      }}
+                      to={`/Checkout`}
+                    >
+                      <>
+                        <img src={img2} className="arrow"></img>
+                        <p>Checkout</p>
+                      </>
+                    </NavLink>
+                  </li>
                   <li className="last">
                     <Settings page="products" />
                   </li>
